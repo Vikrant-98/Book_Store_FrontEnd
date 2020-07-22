@@ -1,0 +1,7 @@
+<div >    
+    <app-displaybooks
+      (getBooks)=getBooks()
+      *ngFor="let item of books"
+      [book]="item">
+    </app-displaybooks>    
+</div>

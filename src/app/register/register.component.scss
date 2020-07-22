@@ -1,0 +1,21 @@
+*{margin: 0; padding: 0;}
+
+$ToolBarbg : #960000 ;
+$ToolBarText : white;
+
+mat-toolbar{
+    background-color: $ToolBarbg ;
+    color: $ToolBarText;
+    height: 60px;
+}
+
+mat-card{
+    margin-top: 100px;
+    display: flex;
+}
+mat-icon{
+    width: 30px;
+}
+mat-radio-button{
+    width: 80px;
+}

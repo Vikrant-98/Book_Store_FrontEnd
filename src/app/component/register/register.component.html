@@ -1,0 +1,66 @@
+<div >
+    <mat-toolbar fxFlex=100>
+        <span>Book Store</span>
+    </mat-toolbar>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center" >
+        <mat-card fxLayout="column" fxFlex="500px" fxFlex.xs="100%">
+            <mat-card-header fxFlex="50px" fxLayoutAlign="center">
+                <mat-card-title>Registration</mat-card-title>
+              </mat-card-header>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput [formControl]="FirstName" placeholder="Enter First Name" autocomplete="off" />
+                <mat-error *ngIf="FirstName.invalid">{{
+                  getFirstNameErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput [formControl]="LastName" placeholder="Enter Last Name" autocomplete="off" />
+                <mat-error *ngIf="LastName.invalid">{{
+                  getLastNameErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email Id</mat-label>
+                <input matInput [formControl]="Email" placeholder="abc@gmail.com " autocomplete="off" />
+                <mat-error *ngIf="Email.invalid">{{
+                  getEmailErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [formControl]="Password" placeholder="Enter your password" autocomplete="off"
+                  [type]="hide ? 'password' : 'text'" />
+                <mat-error *ngIf="Password.invalid">{{
+                  getPasswordErrorMessage()
+                }}</mat-error>
+                <mat-icon matSuffix (click)="hide = !hide">
+                  {{ hide ? "visibility" : "visibility_off" }}
+                </mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [formControl]="ConfirmPassword" placeholder="Re-Enter your password" autocomplete="off"
+                  [type]="hide ? 'password' : 'text'" />
+                <mat-error *ngIf="ConfirmPassword.invalid">{{
+                    getPasswordErrorMessage()
+                }}</mat-error>
+                <mat-icon matSuffix (click)="hide = !hide">
+                  {{ hide ? "visibility" : "visibility_off" }}
+                </mat-icon>
+              </mat-form-field>
+              
+              <div>
+                <section>
+                    <div>
+                        <!-- <a routerLink="/login" style="text-decoration: none" class="signin">Sign in instead</a> -->
+                        <button mat-raised-button type="submit" (click)="onSubmit()" >Next</button>
+                    </div>
+                </section>
+            </div>
+        </mat-card>
+    
+</div>

@@ -1,0 +1,67 @@
+<div >
+    <mat-toolbar fxLayoutAlign="center center"  fxFlex=100>
+        <mat-icon>menu_book</mat-icon>
+        <span>Book Store</span>
+    </mat-toolbar>
+</div>
+
+<div fxLayout = "column" fxLayoutAlign="center center" >
+    
+    <img class="image" src="../../../assets/Images/Book5.jpg" alt="there is image">
+    
+    <mat-card fxFlex.xs="100%">
+      <div fxLayout="column" fxFlex="350px" fxFlex.xs="100%">
+        <mat-card-header fxLayoutAlign="center">
+            <mat-card-title>Login</mat-card-title>
+          </mat-card-header>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Id</mat-label>
+          <input
+            matInput
+            [formControl]="Email"
+            placeholder="abc@gmail.com"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="Email.invalid">{{
+            getEmailErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [formControl]="Password"
+            placeholder="Enter your password"
+            autocomplete="off"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-error *ngIf="Password.invalid">{{
+            getPasswordErrorMessage()
+          }}</mat-error>
+          <mat-icon matSuffix (click)="hide = !hide">
+            {{ hide ? "visibility" : "visibility_off" }}
+          </mat-icon>
+        </mat-form-field>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="Admin">Admin</mat-radio-button>
+            <mat-radio-button value="User">User</mat-radio-button>
+        </mat-radio-group>
+        <div fxFlex="50px" fxLayoutAlign="space-between end">
+          <a routerLink="/register">
+            Create Account
+          </a>
+          <button
+            mat-button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            (click)="onLogin()"
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  
