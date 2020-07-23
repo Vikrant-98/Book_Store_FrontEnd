@@ -10,7 +10,7 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 export class DashboardComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
-
+  search:string;
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

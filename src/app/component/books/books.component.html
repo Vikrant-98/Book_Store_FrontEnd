@@ -1,6 +1,7 @@
-<div >    
+<div
+    fxLayout="row wrap" 
+    fxLayoutAlign="center center" >   
     <app-displaybooks
-      (getBooks)=getBooks()
       *ngFor="let item of books"
       [book]="item">
     </app-displaybooks>    

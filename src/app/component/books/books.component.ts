@@ -11,7 +11,7 @@ import { BookService } from '../../service/bookservice/book.service';
 export class BooksComponent implements OnInit {
 
   books: Array<any>;
-
+  
   constructor(
     private bookservice: BookService,
     private snackBar: MatSnackBar,
@@ -20,15 +20,13 @@ export class BooksComponent implements OnInit {
   getBooks() {
     this.bookservice.getBooks().subscribe(
       (res: any) => {
-        let books = res.data.filter((element: any) => {          
-        return element.IsDelete === false;
-        });
-        this.books = books;
+        this.books = res.data;
+        console.log(res.data);
         console.log(res);
         },
       (err) => {
         this.snackBar.open('Error occured at get Books', '', {
-          duration: 2000,
+          duration: 3000,
         });
         console.log(err);
       }

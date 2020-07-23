@@ -10,6 +10,21 @@ export class BookService {
   
   getBooks() 
   {
-    return this.httpService.get('api/Books');
+    return this.httpService.get('Books');
   }
+
+  login(loginData) {
+    return this.httpService.post('Users/login', loginData);
+  }
+
+  addToCart(data)
+  {
+    return this.httpService.postData('Cart',data);
+  }
+
+  addToWishList(data)
+  {
+    return this.httpService.postData('WishList',data);
+  }
+
 }

@@ -1,5 +1,44 @@
-<mat-card>
-    <div>
-        {{ book.BookName }}
+<div class="book-area" >
+    <div 
+        class="book-image"
+        fxLayout="row" 
+        fxLayoutAlign="center center" 
+        fxFlex="60">
+    <img 
+        mat-card-image 
+        class="img" 
+        src = "{{ book.image }}" 
+        alt="Photo of a {{ book.bookName }}">
     </div>
-</mat-card>
+    <div
+        fxLayout="column" 
+        fxLayoutAlign="space-around start" 
+        class="book-content" >
+        <div>
+        {{ book.bookName }}
+        </div>
+        <div class="book-author">
+        by  {{ book.authorName }}
+        </div>
+        <div>
+            Rs. {{ book.price }}
+        </div>
+    </div>
+    <div
+        fxLayoutAlign="start start">
+        <button 
+            class="add-to-cart"
+            mat-raised-button 
+            fxLayoutAlign="center center"
+            (click)="addToCart()"
+            >ADD TO CART
+        </button>
+        <button 
+            class="add-to-cart wishlist"
+            mat-raised-button 
+            fxLayoutAlign="center center"
+            (click)="addToWishList()"
+            >WISH LIST
+        </button>
+    </div>
+</div>

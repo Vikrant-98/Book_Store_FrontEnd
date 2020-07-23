@@ -26,9 +26,17 @@ export class HttpService {
   }
 
   get(url) {
-    return this.http.get(environment.baseUrl + url, {
-      headers: this.httpOption,
-    });
+    return this.http.get(environment.baseUrl + url);
+  }
+
+  postData(url: string, data: Object) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.post(environment.baseUrl + url, data, httpOption);
   }
 
 }
