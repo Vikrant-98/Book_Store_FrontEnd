@@ -1,0 +1,11 @@
+<app-tool-bar>
+</app-tool-bar>
+<div
+    fxLayout="row wrap" 
+    fxLayoutAlign="center center" >   
+    <div *ngFor="let item of books">
+        <div class="body-area">
+        {{item.bookName}}
+        </div>
+    </div>    
+</div>

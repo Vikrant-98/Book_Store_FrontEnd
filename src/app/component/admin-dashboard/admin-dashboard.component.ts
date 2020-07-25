@@ -3,14 +3,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookService } from '../../service/bookservice/book.service';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss']
 })
-export class BooksComponent implements OnInit {
-
+export class AdminDashboardComponent implements OnInit {
   books: Array<any>;
-  
+
   constructor(
     private bookservice: BookService,
     private snackBar: MatSnackBar,
@@ -31,7 +30,7 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBooks()
+    this.getBooks();
   }
 
 }

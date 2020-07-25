@@ -1,16 +1,14 @@
-<div >
-    <mat-toolbar fxLayoutAlign="center center"  fxFlex=100>
-        <mat-icon>menu_book</mat-icon>
-        <span>Book Store</span>
-    </mat-toolbar>
-</div>
+<app-tool-bar>
+</app-tool-bar>
 
 <div fxLayout = "column" fxLayoutAlign="center center" >
     
-    <img class="image" src="../../../assets/Images/Book5.jpg" alt="there is image">
+    
     
     <mat-card fxFlex.xs="100%">
+      
       <div fxLayout="column" fxFlex="350px" fxFlex.xs="100%">
+        <img class="image" src="../../../assets/Images/Book5.jpg" alt="there is image">
         <mat-card-header fxLayoutAlign="center">
             <mat-card-title>Login</mat-card-title>
           </mat-card-header>
@@ -43,10 +41,14 @@
             {{ hide ? "visibility" : "visibility_off" }}
           </mat-icon>
         </mat-form-field>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="Admin">Admin</mat-radio-button>
-            <mat-radio-button value="User">User</mat-radio-button>
-        </mat-radio-group>
+          <div *ngFor="let users of user">
+            <input
+              type="radio"
+              name="status"
+              value="{{users}}"
+              (change)="radioChangeHandler($event)">
+              {{users}}
+          </div>
         <div fxFlex="50px" fxLayoutAlign="space-between end">
           <a routerLink="/register">
             Create Account

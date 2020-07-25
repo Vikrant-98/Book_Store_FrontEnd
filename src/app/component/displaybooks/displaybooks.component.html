@@ -6,7 +6,7 @@
         fxFlex="60">
     <img 
         mat-card-image 
-        class="img" 
+        class="img"
         src = "{{ book.image }}" 
         alt="Photo of a {{ book.bookName }}">
     </div>
@@ -24,21 +24,40 @@
             Rs. {{ book.price }}
         </div>
     </div>
+<div
+    *ngIf="view"
+    fxLayoutAlign="start start">
+    <button 
+        class="add-to-cart"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToCart()"
+        >ADD TO CART
+    </button>
+    <button 
+        class="add-to-cart wishlist"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToWishList()"
+    >WISH LIST
+    </button>
+    </div>
     <div
+        *ngIf="!view"
         fxLayoutAlign="start start">
-        <button 
-            class="add-to-cart"
-            mat-raised-button 
-            fxLayoutAlign="center center"
-            (click)="addToCart()"
-            >ADD TO CART
-        </button>
-        <button 
-            class="add-to-cart wishlist"
-            mat-raised-button 
-            fxLayoutAlign="center center"
-            (click)="addToWishList()"
-            >WISH LIST
-        </button>
+    <button 
+        class="add-to-cart"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="openBookDialog()"
+    >Edit Book
+    </button>
+    <button 
+        class="add-to-cart wishlist"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="deleteBook()"
+    >Close
+    </button>
     </div>
 </div>

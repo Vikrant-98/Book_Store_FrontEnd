@@ -1,0 +1,46 @@
+<div
+    fxLayout="column" 
+    fxLayoutAlign="center center">
+    <mat-form-field appearance="outline">
+        <mat-label>Bookname</mat-label>
+        <input 
+            matInput [(ngModel)]="BookName"  
+            placeholder="{{BookName}}"
+            autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Author Name</mat-label>
+        <input 
+            matInput [(ngModel)]="AuthorName"  
+            placeholder="{{AuthorName}}"
+            autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input 
+            matInput [(ngModel)]="Price"  
+            placeholder="{{Price}}"
+            autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input 
+            matInput [(ngModel)]="Description"  
+            placeholder="{{Description}}"
+            autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Available</mat-label>
+        <input 
+            matInput [(ngModel)]="Available"  
+            placeholder="{{Available}}"
+            autocomplete="off" />
+    </mat-form-field>
+    <button 
+        class="add-to-cart wishlist"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="close()"
+    >Delete Book
+    </button>
+</div>

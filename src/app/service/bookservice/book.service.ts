@@ -13,8 +13,14 @@ export class BookService {
     return this.httpService.get('Books');
   }
 
-  login(loginData) {
-    return this.httpService.post('Users/login', loginData);
+  getCart()
+  {
+    return this.httpService.getAuthDetails('Cart');
+  }
+  
+  getWishList()
+  {
+    return this.httpService.getAuthDetails('WishList');
   }
 
   addToCart(data)
@@ -25,6 +31,26 @@ export class BookService {
   addToWishList(data)
   {
     return this.httpService.postData('WishList',data);
+  }
+
+  placeOrder(cartId,data)
+  {
+    return this.httpService.postData(`Order/${cartId}/PlaceOrder`,data);
+  }
+
+  quantity(data)
+  {
+    return this.httpService.postData(`Cart`,data);
+  }
+
+  updateBook(BookId,data)
+  {
+    return this.httpService.putBooks(`Books/${BookId}`,data);
+  }
+
+  deleteBook(BookId)
+  {
+    return this.httpService.deleteBooks(`Books/${BookId}`);
   }
 
 }

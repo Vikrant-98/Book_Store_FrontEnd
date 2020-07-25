@@ -1,0 +1,263 @@
+<div 
+    fxLayout="column" 
+    fxLayoutAlign="center center">
+    <div 
+        class="layout-open">  
+        <div
+            class="cart-myCart" 
+            fxLayout="row" 
+            fxLayoutAlign="space-between center" >
+            <div>
+                My Cart
+            </div>
+        </div>
+    <div 
+        fxLayout="row" 
+        fxLayoutAlign="start start">
+            <div>
+                <img 
+                mat-card-image 
+                class="img"
+                src = "{{ book.image }}" 
+                alt="Photo of a {{ book.bookName }}">
+            </div>
+            <div class="book-name">
+                <div >{{ book.bookName }}</div>
+                <div class="book-author">by  {{ book.author }}</div>
+                <div class="book-price"> Rs. {{ book.price }}</div>
+                <div 
+                    fxLayout="row" 
+                    fxLayoutAlign="center center" >
+                    <mat-form-field class="book-quantity">
+                        <mat-label>Quantity</mat-label>
+                        <input matInput type="number" [(ngModel)]="value">
+                    </mat-form-field>
+                    <button 
+                        *ngIf="details"
+                        class="remove" 
+                        mat-raised-button 
+                        color="warn"
+                        fxLayoutAlign="center center"
+                        >REMOVE
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div fxLayoutAlign="end end">
+            <button 
+                *ngIf="details"
+                class="place-order" 
+                mat-raised-button 
+                color="primary"
+                fxLayoutAlign="center center"
+                (click)="customerDetailsOpen()"
+                >PLACE ORDER
+            </button>
+        </div>
+    </div>
+    <div
+        *ngIf="details"
+        class="layout-open layout-close" 
+        >
+        Customer Details
+    </div>
+    <div
+    *ngIf="!details"
+    class="layout-open Layout-Details" 
+    >
+    <div 
+        class="details"
+        fxLayout="row" 
+        fxLayoutAlign="space-between center">
+        <div>
+        Customer Details
+        </div>
+        <div>
+        <button class="edit">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div>
+        <mat-form-field 
+            class="name"
+            appearance="outline">
+            <mat-label>Name</mat-label>
+            <input 
+                matInput [formControl]="Name" 
+                placeholder="Name" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="Name.invalid">{{
+                    getNameErrorMessage()
+                  }}</mat-error>
+        </mat-form-field>
+        <mat-form-field 
+            class="name phoneNumber"
+            appearance="outline">
+            <mat-label>Phone No.</mat-label>
+            <input 
+                matInput [formControl]="PhoneNumber" 
+                placeholder="Phone Number" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="PhoneNumber.invalid">{{
+                    getPhoneNumberErrorMessage()
+                  }}</mat-error>
+        </mat-form-field>
+        
+    </div>
+    <div 
+        fxLayout="row" 
+        fxLayoutAlign="start center">
+        <mat-form-field 
+            class="name"
+            appearance="outline">
+            <mat-label>Pin Code</mat-label>
+            <input 
+                matInput [formControl]="PinCode" 
+                placeholder="Pin" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="PinCode.invalid">{{
+                    getPinCodeErrorMessage()
+                  }}</mat-error>
+        </mat-form-field>
+        <mat-form-field 
+            class="name phoneNumber"
+            appearance="outline">
+            <mat-label>Locality</mat-label>
+            <input 
+                matInput [formControl]="Locality" 
+                placeholder="Locality" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="Locality.invalid">{{
+                    getLocalityErrorMessage()
+                  }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field 
+            class="address"
+            appearance="outline">
+            <mat-label>Address</mat-label>
+            <input 
+                matInput [formControl]="Address" 
+                placeholder="Address" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="Address.invalid">{{
+                    getAddressErrorMessage()
+                  }}</mat-error>
+        </mat-form-field>
+    </div>
+    <div 
+        fxLayout="row" 
+        fxLayoutAlign="start center">
+        <mat-form-field 
+            class="name"
+            appearance="outline">
+            <mat-label>City</mat-label>
+                <input 
+                matInput [formControl]="City" 
+                placeholder="City" 
+                autocomplete="off" 
+                required/>
+                <mat-error *ngIf="City.invalid">{{
+                    getCityErrorMessage()
+                  }}</mat-error>
+            </mat-form-field>
+            <mat-form-field 
+                class="name phoneNumber"
+                appearance="outline">
+                <mat-label>LandMark</mat-label>
+                    <input 
+                    matInput [formControl]="LandMark" 
+                    placeholder="Land Mark" 
+                    autocomplete="off" 
+                    required/>
+                    <mat-error *ngIf="LandMark.invalid">{{
+                        getLandMarkErrorMessage()
+                    }}</mat-error>
+            </mat-form-field>
+        </div>
+        Type
+        <div
+        fxLayout="row" 
+        fxLayoutAlign="space-between center" >
+            <mat-radio-group aria-label="Select an option" fxLayout="row" 
+            fxLayoutAlign="space-between center" 
+            fxLayoutGap="30%">
+                <mat-radio-button value="1">Home</mat-radio-button>
+                <mat-radio-button value="2">Work</mat-radio-button>
+                <mat-radio-button value="3">Other</mat-radio-button>
+            </mat-radio-group>
+                <button 
+                    class="place-order" 
+                    mat-raised-button 
+                    color="primary"
+                    fxLayoutAlign="center center"
+                    (click)="onSubmit()"
+                    (click)="openCard()"
+                    (click)="customerDetailsOpen()"
+                    >CONTINUE
+                </button>
+        </div>
+    </div>
+    <div
+        *ngIf="isPopUp"
+        class="layout-open layout-close" 
+        >
+        Order Summery
+    </div>
+    <div
+        *ngIf="!isPopUp"
+        class="layout-open" 
+        >
+        <div>Order Summery</div>
+        <div 
+        fxLayout="row" 
+        fxLayoutAlign="start start">
+            <div>
+                <img 
+                mat-card-image 
+                class="img"
+                src = "{{ book.image }}" 
+                alt="Photo of a {{ book.bookName }}">
+            </div>
+            <div class="book-name">
+                <div >{{ book.bookName }}</div>
+                <div class="book-author">by  {{ book.author }}</div>
+                <div class="book-price"> Rs. {{ book.price*value }}</div>
+                <div 
+                    class="book-quantity"
+                    fxLayout="row" 
+                    fxLayoutAlign="start center" >
+                    <div>
+                        Quantity
+                        {{value}}
+                    </div>
+                    <button 
+                        *ngIf="details"
+                        class="remove" 
+                        mat-raised-button 
+                        color="warn"
+                        fxLayoutAlign="center center"
+                        >REMOVE
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div fxLayoutAlign="end end">
+            <button 
+                class="place-order" 
+                mat-raised-button 
+                color="primary"
+                fxLayoutAlign="center center"
+                (click)="customerDetailsOpen()"
+                >CHECK OUT
+            </button>
+        </div>
+    </div>
+</div>

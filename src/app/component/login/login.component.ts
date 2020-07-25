@@ -13,6 +13,18 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
+  userCategory : string;
+
+  user : any = [
+    'Admin',
+    'User'
+  ];
+
+  radioChangeHandler(event:any){
+    this.userCategory = event.target.value;
+    console.log(this.userCategory)
+  }
+
   constructor(
     private userService: UserService,
     private snackBar: MatSnackBar,
@@ -38,7 +50,48 @@ export class LoginComponent implements OnInit {
       : 'Password should be minimum of 8 characters';
   }
 
-  onLogin() {
+  onLogin()
+  {
+    if(this.userCategory === "Admin")
+    {
+        this.AdminLogin();
+    }
+    else if(this.userCategory === "User")
+    {
+        this.UserLogin();
+    }
+    else
+    {
+      this.snackBar.open('Select User Category', '', {
+        duration: 6000,
+      });
+    }
+  }
+
+  AdminLogin(){
+    let userData = {
+      EmailID: this.Email.value,
+      Password: this.Password.value
+    };
+    this.userService.Adminlogin(userData).subscribe(
+      (response: any) => {
+        localStorage.setItem('token', response.jsontoken);
+        localStorage.setItem('userCategory', response.result.userCategory);
+        this.snackBar.open('Admin Login Sucessfully', '', {
+          duration: 2000,
+        });
+        console.log(response)
+        this.route.navigate(['/adminDashboard']);
+      },
+      (err) => {
+        this.snackBar.open('Please enter valid Email and Password', '', {
+          duration: 4000,
+        });
+      }
+    );
+  }
+
+  UserLogin() {
     let userData = {
       EmailID: this.Email.value,
       Password: this.Password.value
@@ -46,6 +99,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(userData).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.jsontoken);
+        localStorage.setItem('userCategory', response.result.userCategory);
         this.snackBar.open('User Login Sucessfully', '', {
           duration: 2000,
         });

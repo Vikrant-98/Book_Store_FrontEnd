@@ -1,0 +1,8 @@
+$ToolBarbg : #960000 ;
+$ToolBarText : white;
+
+mat-toolbar{
+    background-color: $ToolBarbg ;
+    color: $ToolBarText;
+    height: 60px;
+}

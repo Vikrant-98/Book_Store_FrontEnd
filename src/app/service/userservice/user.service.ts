@@ -16,4 +16,8 @@ export class UserService {
     return this.httpService.post('Users/login', loginData);
   }
 
+  Adminlogin(loginData) {
+    return this.httpService.post('Admin/login', loginData);
+  }
+
 }

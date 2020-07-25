@@ -1,18 +1,32 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-    <mat-toolbar class="example-toolbar">
+
+    <mat-toolbar 
+          class="example-toolbar"
+          >
       <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
       <mat-icon>
-        <img src="../../../assets/Images/read-book (1).svg" />
+        <img src="../../../assets/Images/open-book-svgrepo-com (1).svg" />
       </mat-icon>
       <h1 class="example-app-name">Book Store</h1>
-      <!-- <div >
+      <div >
         <input 
+          fxHide.xs=true 
+          fxHide.sm=true 
           type="search" 
           [(ngModel)]="search"
           placeholder="Search" 
           class="search"
         >
-      </div> -->
+        <input 
+          fxHide.md=true 
+          fxHide.xl=true 
+          fxHide.lg=true 
+          type="search" 
+          [(ngModel)]="search"
+          placeholder="Search" 
+          class="search search-md-xl"
+        >
+      </div>
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container"

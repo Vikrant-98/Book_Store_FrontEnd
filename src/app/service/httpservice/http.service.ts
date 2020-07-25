@@ -29,6 +29,16 @@ export class HttpService {
     return this.http.get(environment.baseUrl + url);
   }
 
+  getAuthDetails(url) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.get(environment.baseUrl + url, httpOption);
+  }
+
   postData(url: string, data: Object) {
     let httpOption = {
       headers: new HttpHeaders({
@@ -37,6 +47,26 @@ export class HttpService {
       }),
     };
     return this.http.post(environment.baseUrl + url, data, httpOption);
+  }
+
+  putBooks(url: string, note: Object) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.put(environment.baseUrl + url, note, httpOption);
+  }
+
+  deleteBooks(url: string) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization:  `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.delete(environment.baseUrl + url,httpOption);
   }
 
 }

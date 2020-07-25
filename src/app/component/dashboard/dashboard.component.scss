@@ -1,5 +1,7 @@
 @import "../../register/register.component.scss";
 
+$ToolBarbg : #960000 ;
+
 .example-container {
     display: flex;
     flex-direction: column;
@@ -31,6 +33,9 @@
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
   }
+  mat-toolbar{
+    background-color: $ToolBarbg;
+  }
   .menu-icon{
     margin-left: 8px;
   }
@@ -41,4 +46,8 @@
     border-radius: 5px;
     border: 1px solid #ebebeb;
     outline: none;
+  }
+  .search-md-xl{
+    margin-left: 50px;
+    width: 300px;
   }
