@@ -48,6 +48,16 @@ export class BookService {
     return this.httpService.postData('WishList',data);
   }
 
+  moveToCart(wishListID)
+  {
+    return this.httpService.WishList(`WishList/${wishListID}/Move`); 
+  }
+
+  deleteWishlist(wishListID)
+  {
+    return this.httpService.delete(`WishList/${wishListID}`); 
+  }
+
   addBook(data)
   {
     return this.httpService.postData('Books',data);

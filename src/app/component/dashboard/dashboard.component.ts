@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit,DoCheck {
 
   ngOnInit(): void {
     this.userSelection();
+    this.getUserBooks();
   }
 
 

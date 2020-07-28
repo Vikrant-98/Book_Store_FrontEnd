@@ -29,7 +29,7 @@ export class WishListComponent implements OnInit {
         console.log(res);
         },
       (err) => {
-        this.snackBar.open('Error occured at get Cart', '', {
+        this.snackBar.open('Error occured at get WishList', '', {
           duration: 3000,
         });
         console.log(err);

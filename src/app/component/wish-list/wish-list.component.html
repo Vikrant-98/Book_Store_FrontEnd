@@ -2,6 +2,7 @@
     fxLayout="row wrap" 
     fxLayoutAlign="center center" >   
     <app-wish-list-to-cart 
+        (getWishList)="getWishList()"
         *ngFor="let item of books"
         [book]=item>
     </app-wish-list-to-cart>    

@@ -23,20 +23,31 @@
             </div>
             <div class="book-name">
                 <div >{{ book.bookName }}</div>
-                <div class="book-author">by  {{ book.author }}</div>
+                <div class="book-author">by  {{ book.authorName }}</div>
                 <div class="book-price"> Rs. {{ book.price }}</div>
                     <div 
                     fxLayout="row" 
-                    fxLayoutAlign="center center" >
+                    fxLayoutAlign="start center" >
                     <button 
                         class="remove" 
                         mat-raised-button 
                         color="warn"
                         fxLayoutAlign="center center"
+                        (click)="deleteCart()"
                         >REMOVE
                     </button>
                 </div>
             </div>
+        </div>
+        <div fxLayoutAlign="end end">
+            <button 
+                class="place-order" 
+                mat-raised-button 
+                color="primary"
+                fxLayoutAlign="center center"
+                (click)="moveTOCart()"
+                >Move To Cart
+            </button>
         </div>
     </div>
 </div>
