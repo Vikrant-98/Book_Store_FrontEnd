@@ -1,4 +1,4 @@
-<div class="book-area" >
+<div class="book-area">
     <div 
         class="book-image"
         fxLayout="row" 
@@ -27,7 +27,7 @@
 <div
     *ngIf="view"
     fxLayoutAlign="start start">
-    <button 
+    <button
         class="add-to-cart"
         mat-raised-button 
         fxLayoutAlign="center center"
@@ -35,7 +35,23 @@
         >ADD TO CART
     </button>
     <button 
+        class="add-to-cart"
+        *ngIf="Cart"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToCart()"
+        >ADD TO CART
+    </button>
+    <button 
         class="add-to-cart wishlist"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToWishList()"
+    >WISH LIST
+    </button>
+    <button 
+        class="add-to-cart wishlist"
+        *ngIf="!Wish"
         mat-raised-button 
         fxLayoutAlign="center center"
         (click)="addToWishList()"
@@ -57,7 +73,7 @@
         mat-raised-button 
         fxLayoutAlign="center center"
         (click)="deleteBook()"
-    >Close
+    >Delete
     </button>
     </div>
 </div>

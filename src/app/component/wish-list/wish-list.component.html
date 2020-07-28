@@ -1,8 +1,8 @@
 <div
     fxLayout="row wrap" 
     fxLayoutAlign="center center" >   
-    <app-displaybooks
-      *ngFor="let item of books"
-      [book]="item">
-    </app-displaybooks>    
+    <app-wish-list-to-cart 
+        *ngFor="let item of books"
+        [book]=item>
+    </app-wish-list-to-cart>    
 </div>

@@ -1,8 +1,11 @@
-$ToolBarbg : #960000 ;
+$ToolBarbg : #A03037 ;
 $ToolBarText : white;
 
 mat-toolbar{
     background-color: $ToolBarbg ;
     color: $ToolBarText;
     height: 60px;
+}
+.book{
+    font-size: large;
 }

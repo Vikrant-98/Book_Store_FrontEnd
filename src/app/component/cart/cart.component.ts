@@ -16,6 +16,10 @@ export class CartComponent implements OnInit {
     private snackBar: MatSnackBar,
   ) { }
 
+  ngOnInit(): void {
+    this.getCart()
+  }
+
   getCart() {
     this.bookservice.getCart().subscribe(
       (res: any) => {
@@ -36,8 +40,6 @@ export class CartComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.getCart()
-  }
+  
 
 }

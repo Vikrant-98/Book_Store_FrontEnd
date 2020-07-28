@@ -32,6 +32,10 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
 import { IconsComponent } from './component/icons/icons.component';
 import { UpdateBooksComponent } from './component/update-books/update-books.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AddBooksComponent } from './component/add-books/add-books.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { WishListToCartComponent } from './component/wish-list-to-cart/wish-list-to-cart.component';
 
 
 
@@ -49,7 +53,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AdminDashboardComponent,
     ToolBarComponent,
     IconsComponent,
-    UpdateBooksComponent
+    UpdateBooksComponent,
+    AddBooksComponent,
+    WishListToCartComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +77,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatListModule,
     MatPaginatorModule,
     MatSliderModule,
-    MatDialogModule
+    MatDialogModule,
+    MatBadgeModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

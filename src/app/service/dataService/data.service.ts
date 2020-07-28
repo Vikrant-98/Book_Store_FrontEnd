@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
 
   private book = new BehaviorSubject<any>("");
+  public share = this.book.asObservable();
 
   constructor() { }
 

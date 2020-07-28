@@ -13,6 +13,21 @@ export class BookService {
     return this.httpService.get('Books');
   }
 
+  getSearchBooks(text) 
+  {
+    return this.httpService.get(`Books?Search=${text}`);
+  }
+
+  getSortBooks(text) 
+  {
+    return this.httpService.get(`Books?OrderBy=${text}`);
+  }
+
+  getUserBooks() 
+  {
+    return this.httpService.getAuthDetails('Books/Cart');
+  }
+
   getCart()
   {
     return this.httpService.getAuthDetails('Cart');
@@ -33,6 +48,21 @@ export class BookService {
     return this.httpService.postData('WishList',data);
   }
 
+  addBook(data)
+  {
+    return this.httpService.postData('Books',data);
+  }
+
+  addImage(BookID,Image)
+  {
+    return this.httpService.putImage(`Books/${BookID}/Image`,Image);
+  }
+
+  deleteCart(BookId)
+  {
+    return this.httpService.delete(`Cart/${BookId}`);
+  }
+
   placeOrder(cartId,data)
   {
     return this.httpService.postData(`Order/${cartId}/PlaceOrder`,data);
@@ -50,7 +80,7 @@ export class BookService {
 
   deleteBook(BookId)
   {
-    return this.httpService.deleteBooks(`Books/${BookId}`);
+    return this.httpService.delete(`Books/${BookId}`);
   }
 
 }

@@ -1,5 +1,6 @@
 <div>   
     <app-place-order
+      (getBooks)="getCart()"
       *ngFor="let item of books"
       [book]="item">
     </app-place-order>    

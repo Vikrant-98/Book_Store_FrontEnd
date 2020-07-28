@@ -1,5 +1,9 @@
-import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import { Output, EventEmitter, Component, OnInit,DoCheck} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddBooksComponent } from '../add-books/add-books.component'
+import { BookService } from '../../service/bookservice/book.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from '../../service/dataservice/data.service';
 
 
 @Component({
@@ -7,22 +11,94 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnInit,DoCheck {
 
-  mobileQuery: MediaQueryList;
-  search:string;
-  private _mobileQueryListener: () => void;
+  @Output()getBooks: EventEmitter<any> = new EventEmitter();
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  
+  search: string;
+  view: boolean ;
+  cart: any;
+  Role = localStorage.getItem('userCategory');
+
+  constructor(
+    private snackBar : MatSnackBar,
+    private bookService : BookService,
+    private dialog : MatDialog,
+    private data : DataService,
+
+  ) {
   }
 
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+  ngDoCheck(): void
+  {
+    //this.getUserBooks();
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  ngOnInit(): void {
+    this.userSelection();
+  }
 
+
+  updateText()
+  {
+    this.data.Book(this.search);
+  }
+
+  userSelection()
+  {
+    if(this.Role === "User")
+    {
+      this.view = true;
+    }
+    else
+    {
+      this.view = false;
+    }
+  }
+
+  openDialog()
+  {
+    const dialogRef = this.dialog.open(AddBooksComponent);
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res !== undefined) {
+        let bookData = {
+          BookName: res.BookName,
+          AuthorName: res.AuthorName,
+          Description: res.Description,
+          Price: res.Price,
+          Pages: res.Pages,
+          Available: res.Available
+        };
+        this.bookService.addBook(bookData).subscribe(
+          (res) => 
+          { 
+            this.getBooks.emit();
+            console.log("addBook responce",res);
+            console.log("addBook data",bookData);
+          },
+          (err) => 
+          {
+            this.snackBar.open('Error occured Add Books', '', 
+            {
+              duration: 2000,
+            });
+            console.log(err);
+          }
+        );    
+      }
+    });
+  }
+  
+  getUserBooks()
+  {
+    this.bookService.getCart().subscribe(
+      (res: any) => {
+        this.cart = res.data;
+        }
+    );
+    
+  }
+  
+  
 }

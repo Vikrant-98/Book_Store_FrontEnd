@@ -42,24 +42,32 @@ export class HttpService {
   postData(url: string, data: Object) {
     let httpOption = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
     };
     return this.http.post(environment.baseUrl + url, data, httpOption);
   }
 
-  putBooks(url: string, note: Object) {
+  putBooks(url: string, data: Object) {
     let httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }),
     };
-    return this.http.put(environment.baseUrl + url, note, httpOption);
+    return this.http.put(environment.baseUrl + url, data, httpOption);
   }
 
-  deleteBooks(url: string) {
+  putImage(url: string, Image) {
+    let httpOption = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }),
+    };
+    return this.http.put(environment.baseUrl + url, Image, httpOption);
+  }
+
+  delete(url: string) {
     let httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

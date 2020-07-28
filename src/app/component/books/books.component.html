@@ -1,9 +1,26 @@
+<div class="body">
+  <div
+  fxLayout="row " 
+  fxLayoutAlign="space-between center" >
+  <div class="book-count">
+    Books({{books?.length}})
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">Sort By</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="bookName()" (click)="select()">Book Name</button>
+    <button mat-menu-item (click)="price()" (click)="select()">Price</button>
+  </mat-menu>
+  </div>
+</div>
 <div
     fxLayout="row wrap" 
-    fxLayoutAlign="center center" >   
+    fxLayoutAlign="center center"
+>      
     <app-displaybooks
       (getBooks)="getBooks()"
       *ngFor="let item of books"
       [book]="item">
-    </app-displaybooks>    
+    </app-displaybooks>
+</div>
 </div>

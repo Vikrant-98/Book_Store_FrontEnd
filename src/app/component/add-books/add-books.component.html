@@ -6,56 +6,72 @@
         <mat-label>Bookname</mat-label>
         <input 
             matInput [(ngModel)]="BookName"  
-            placeholder="{{BookName}}"
+            placeholder="BookName"
             autocomplete="off" />
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Author Name</mat-label>
         <input 
             matInput [(ngModel)]="AuthorName"  
-            placeholder="{{AuthorName}}"
+            placeholder="AuthorName"
+            autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input 
+            matInput [(ngModel)]="Pages"  
+            placeholder="Price"
             autocomplete="off" />
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Price</mat-label>
         <input 
             matInput [(ngModel)]="Price"  
-            placeholder="{{Price}}"
+            placeholder="Price"
             autocomplete="off" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea 
+        matInput
+        matInput [(ngModel)]="Description"  
+        placeholder="Description"
+        autocomplete="off" 
+        ></textarea>
     </mat-form-field>
     <!-- <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <input 
             matInput [(ngModel)]="Description"  
-            placeholder="{{Description}}"
+            placeholder="Description"
             autocomplete="off" />
     </mat-form-field> -->
-    <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea 
-        matInput [(ngModel)]="Description"  
-        placeholder="{{Description}}"
-        autocomplete="off" 
-        ></textarea>
-    </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Available</mat-label>
         <input 
             matInput [(ngModel)]="Available"  
-            placeholder="{{Available}}"
+            placeholder="Available"
             autocomplete="off" />
     </mat-form-field>
     <div
-    class="file"
-    fxLayoutAlign="center center"
-    >
-        <input type="file" (change)="onFileSelect($event)">
+    fxLayout="row">
+    <div class="save">
+    <button 
+        class="add-to-cart wishlist"
+        mat-raised-button 
+        color="primary"
+        fxLayoutAlign="center center"
+        (click)="close()"
+    >Save
+    </button>
     </div>
+    <div>
     <button 
         class="add-to-cart wishlist"
         mat-raised-button 
         fxLayoutAlign="center center"
-        (click)="close()"
-    >Close
+    >Cancel
     </button>
+    </div>
+    </div>
 </mat-card>

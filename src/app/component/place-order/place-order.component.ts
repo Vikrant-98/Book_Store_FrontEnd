@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component,OnInit, Input, Output, EventEmitter, Inject,DoCheck } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { BookService } from '../../service/bookservice/book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,6 +15,7 @@ export class PlaceOrderComponent implements OnInit {
     private bookService : BookService
   ) { }
   @Input() book: any;
+  @Output()getBooks: EventEmitter<any> = new EventEmitter();
   value = 1;
 
   isPopUp: boolean = true;
@@ -127,6 +128,7 @@ export class PlaceOrderComponent implements OnInit {
     };
     this.bookService.quantity(quantity).subscribe(
       (resp) => {
+        this.getBooks.emit();
         this.snackBar.open('Quantity Updated Sucessfully', '', {
           duration: 2000,
         });
@@ -139,6 +141,7 @@ export class PlaceOrderComponent implements OnInit {
     );
     this.bookService.placeOrder(this.book.cartID,cartData).subscribe(
         (resp) => {
+          this.getBooks.emit();
           this.snackBar.open('Order Place Sucessfully', '', {
             duration: 5000,
           });
@@ -156,6 +159,28 @@ export class PlaceOrderComponent implements OnInit {
         duration: 5000,
       });
     }
+  }
+
+  deleteCart()
+  {
+    this.bookService.deleteCart(this.book.cartID).subscribe(
+      (res) => 
+      {
+        this.getBooks.emit();
+        this.snackBar.open('Cart Removed Succesfully', '', 
+        {
+          duration: 2000,
+        });
+        console.log(res);
+      },
+      (err) => {
+        this.snackBar.open('Error occured Remove Cart', '', 
+        {
+          duration: 2000,
+        });
+        console.log(err);
+      }
+    );
   }
 
   ngOnInit(): void {

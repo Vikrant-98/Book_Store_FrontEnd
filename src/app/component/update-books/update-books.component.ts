@@ -19,6 +19,12 @@ export class UpdateBooksComponent implements OnInit {
   Price: string;
   Description: string;
   Available: Number;
+  SelectFile:File = null;
+
+  onFileSelect(event){
+    this.SelectFile = <File>event.target.files[0];
+    console.log(this.SelectFile);
+  }
 
   ngOnInit(): void {
     this.BookName = this.data.book.bookName;
@@ -26,6 +32,7 @@ export class UpdateBooksComponent implements OnInit {
     this.Price = this.data.book.price;
     this.Available = this.data.book.available;
     this.Description = this.data.book.description;
+    this.SelectFile = this.data.book.image;
   }
 
   close() {
@@ -35,6 +42,7 @@ export class UpdateBooksComponent implements OnInit {
       Price : this.Price,
       Available : this.Available,
       Description : this.Description,
+      SelectFile : this.SelectFile
     });
   }
 
