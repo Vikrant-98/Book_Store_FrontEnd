@@ -1,0 +1,48 @@
+<div
+    class="order"
+    fxLayout="row" 
+    fxLayoutAlign="center center" >
+    <img class="image" src="../../../assets/Images/PlaceOrder.PNG" alt="there is image">
+</div>
+<div
+    class="order-text"
+    fxLayout="column" 
+    fxLayoutAlign="center center" >
+    <div>hurray!!!your order is confirmed</div>
+    <div>the order id is #{{orderID}} save the order id for</div>
+    <div>further communication....</div>
+
+</div>
+<div
+style="margin-top: 30px;"
+fxLayoutAlign="center center" >
+    <table style="width:60%">
+        <tr >
+          <th><div class="table-text-email" fxLayoutAlign="center center">Email us</div></th>
+          <th><div class="table-text-contact" fxLayoutAlign="center center">Contact</div></th>
+          <th><div class="table-text-address" fxLayoutAlign="center center">Address</div></th>
+        </tr>
+        <tr>
+          <td><div class="table-text-email-content" fxLayoutAlign="center center">admin@bookstore.com</div></td>
+          <td><div class="table-text-contact-content" fxLayoutAlign="center center">+91 8163475881</div></td>
+          <td>
+              <div class="table-text-address-contect" fxLayoutAlign="center center">
+              <div style="width:300px;margin-left: 20px;">42 , 14th Main,15th Cross,Sec 4 Opposit BDA 
+              Complex near Kumarakom resturant,HSR Layout,Bangalore 560034
+              </div>
+              </div>
+        </td>
+        </tr>
+      </table>
+</div>
+<div
+    fxLayoutAlign="center center">
+    <button 
+        class="continue-shoping" 
+        mat-raised-button 
+        color="primary"
+        fxLayoutAlign="center center"
+        (click)="continueShopping()"
+        >Continue Shopping
+    </button>
+</div>

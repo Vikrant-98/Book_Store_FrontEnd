@@ -63,7 +63,7 @@ export class HttpService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-      }),
+      })
     };
     return this.http.post(environment.baseUrl + url, httpOption);
   }

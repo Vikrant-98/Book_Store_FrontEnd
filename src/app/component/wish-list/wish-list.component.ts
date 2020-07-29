@@ -20,12 +20,8 @@ export class WishListComponent implements OnInit {
   getWishList() {
     this.bookservice.getWishList().subscribe(
       (res: any) => {
-        let wishList = res.data.filter((element: any) => {
-          return element.isDeleted === false && element.isMoved === false;
-        });
-        this.books = wishList;
+        this.books = res.data;
         console.log(res.data);
-        console.log('wishList',wishList);
         console.log(res);
         },
       (err) => {

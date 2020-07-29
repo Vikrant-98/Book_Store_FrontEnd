@@ -23,4 +23,13 @@
       [book]="item">
     </app-displaybooks>
 </div>
+<div
+    fxLayout="row" 
+    fxLayoutAlign="center center">
+    <mat-paginator 
+      [length]="books?.length" 
+      [pageSize]="pageSize" 
+      (page)="pageEvent = getPaginatorData($event)">
+</mat-paginator> 
+</div>
 </div>

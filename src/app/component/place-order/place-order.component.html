@@ -1,6 +1,7 @@
 <div 
     fxLayout="column" 
-    fxLayoutAlign="center center">
+    fxLayoutAlign="center center"
+    fxFlex.xs="100%">
     <div 
         class="layout-open">  
         <div
@@ -85,26 +86,26 @@
             appearance="outline">
             <mat-label>Name</mat-label>
             <input 
-                matInput [formControl]="Name" 
+                matInput [(ngModel)]="Name" 
                 placeholder="Name" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="Name.invalid">{{
+                <!-- <mat-error *ngIf="Name.invalid">{{
                     getNameErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
         </mat-form-field>
         <mat-form-field 
             class="name phoneNumber"
             appearance="outline">
             <mat-label>Phone No.</mat-label>
             <input 
-                matInput [formControl]="PhoneNumber" 
+                matInput [(ngModel)]="PhoneNumber" 
                 placeholder="Phone Number" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="PhoneNumber.invalid">{{
+                <!-- <mat-error *ngIf="PhoneNumber.invalid">{{
                     getPhoneNumberErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
         </mat-form-field>
         
     </div>
@@ -116,26 +117,26 @@
             appearance="outline">
             <mat-label>Pin Code</mat-label>
             <input 
-                matInput [formControl]="PinCode" 
+                matInput [(ngModel)]="PinCode" 
                 placeholder="Pin" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="PinCode.invalid">{{
+                <!-- <mat-error *ngIf="PinCode.invalid">{{
                     getPinCodeErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
         </mat-form-field>
         <mat-form-field 
             class="name phoneNumber"
             appearance="outline">
             <mat-label>Locality</mat-label>
             <input 
-                matInput [formControl]="Locality" 
+                matInput [(ngModel)]="Locality" 
                 placeholder="Locality" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="Locality.invalid">{{
+                <!-- <mat-error *ngIf="Locality.invalid">{{
                     getLocalityErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
         </mat-form-field>
     </div>
     <div>
@@ -144,13 +145,13 @@
             appearance="outline">
             <mat-label>Address</mat-label>
             <input 
-                matInput [formControl]="Address" 
+                matInput [(ngModel)]="Address" 
                 placeholder="Address" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="Address.invalid">{{
+                <!-- <mat-error *ngIf="Address.invalid">{{
                     getAddressErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
         </mat-form-field>
     </div>
     <div 
@@ -161,26 +162,26 @@
             appearance="outline">
             <mat-label>City</mat-label>
                 <input 
-                matInput [formControl]="City" 
+                matInput [(ngModel)]="City" 
                 placeholder="City" 
                 autocomplete="off" 
                 required/>
-                <mat-error *ngIf="City.invalid">{{
+                <!-- <mat-error *ngIf="City.invalid">{{
                     getCityErrorMessage()
-                  }}</mat-error>
+                  }}</mat-error> -->
             </mat-form-field>
             <mat-form-field 
                 class="name phoneNumber"
                 appearance="outline">
                 <mat-label>LandMark</mat-label>
                     <input 
-                    matInput [formControl]="LandMark" 
+                    matInput [(ngModel)]="LandMark" 
                     placeholder="Land Mark" 
                     autocomplete="off" 
                     required/>
-                    <mat-error *ngIf="LandMark.invalid">{{
+                    <!-- <mat-error *ngIf="LandMark.invalid">{{
                         getLandMarkErrorMessage()
-                    }}</mat-error>
+                    }}</mat-error> -->
             </mat-form-field>
         </div>
         Type
@@ -199,9 +200,7 @@
                     mat-raised-button 
                     color="primary"
                     fxLayoutAlign="center center"
-                    (click)="onSubmit()"
-                    (click)="openCard()"
-                    (click)="customerDetailsOpen()"
+                    (click)="addAddress()"
                     >CONTINUE
                 </button>
         </div>
@@ -252,11 +251,13 @@
         </div>
         <div fxLayoutAlign="end end">
             <button 
+                *ngIf="!details"
                 class="place-order" 
                 mat-raised-button 
                 color="primary"
                 fxLayoutAlign="center center"
                 (click)="customerDetailsOpen()"
+                (click)="placeOrder()"
                 >CHECK OUT
             </button>
         </div>

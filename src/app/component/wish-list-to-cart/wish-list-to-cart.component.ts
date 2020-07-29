@@ -45,18 +45,21 @@ export class WishListToCartComponent implements OnInit {
 
   moveTOCart()
   {
-    this.bookService.moveToCart(this.book.wishListID).subscribe(
+    let WishList = {
+      WishListID: this.book.wishListID,
+  };
+    this.bookService.moveToCart(WishList).subscribe(
       (res) => 
       {
         this.getWishList.emit();
-        this.snackBar.open('Cart Removed Succesfully', '', 
+        this.snackBar.open('WishList Move To Cart Succesfully', '', 
         {
           duration: 2000,
         });
         console.log(res);
       },
       (err) => {
-        this.snackBar.open('Error occured Remove Cart', '', 
+        this.snackBar.open('Error occured Move Cart', '', 
         {
           duration: 2000,
         });

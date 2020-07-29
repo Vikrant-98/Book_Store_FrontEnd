@@ -4,7 +4,7 @@ import { BookService } from '../../service/bookservice/book.service';
 import { AddBooksComponent } from '../add-books/add-books.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../service/dataservice/data.service';
-import { async } from '@angular/core/testing';
+import {PageEvent} from '@angular/material/paginator';
 
 
 @Component({
@@ -18,6 +18,8 @@ export class BooksComponent implements OnInit{
   books: Array<any>;
   text='';
   sortBy='';
+  length: number = 12;
+  pageEvent
 
 
   constructor(
@@ -34,7 +36,23 @@ export class BooksComponent implements OnInit{
     this.select()
   }
 
-  
+  pageIndex:number = 0;
+    pageSize:number = 12;
+    lowValue:number = 0;
+    highValue:number = 12;       
+
+  getPaginatorData(event){
+     console.log(event);
+     if(event.pageIndex === this.pageIndex + 1){
+        this.lowValue = this.lowValue + this.pageSize;
+        this.highValue =  this.highValue + this.pageSize;
+       }
+    else if(event.pageIndex === this.pageIndex - 1){
+       this.lowValue = this.lowValue - this.pageSize;
+       this.highValue =  this.highValue - this.pageSize;
+      }   
+       this.pageIndex = event.pageIndex;
+ }
 
   bookName()
   {

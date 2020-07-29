@@ -36,7 +36,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { AddBooksComponent } from './component/add-books/add-books.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { WishListToCartComponent } from './component/wish-list-to-cart/wish-list-to-cart.component';
-
+import { OrderDetailsComponent } from './component/order-details/order-details.component';
 
 
 @NgModule({
@@ -55,7 +55,8 @@ import { WishListToCartComponent } from './component/wish-list-to-cart/wish-list
     IconsComponent,
     UpdateBooksComponent,
     AddBooksComponent,
-    WishListToCartComponent
+    WishListToCartComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

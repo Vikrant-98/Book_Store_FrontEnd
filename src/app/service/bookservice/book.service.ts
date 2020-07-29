@@ -48,9 +48,14 @@ export class BookService {
     return this.httpService.postData('WishList',data);
   }
 
-  moveToCart(wishListID)
+  moveToCart(data)
   {
-    return this.httpService.WishList(`WishList/${wishListID}/Move`); 
+    return this.httpService.postData('WishList/MoveToCart',data); 
+  }
+
+  placeOrder(data)
+  {
+    return this.httpService.postData('Order/PlaceOrder',data);
   }
 
   deleteWishlist(wishListID)
@@ -73,9 +78,9 @@ export class BookService {
     return this.httpService.delete(`Cart/${BookId}`);
   }
 
-  placeOrder(cartId,data)
+  addAddress(data)
   {
-    return this.httpService.postData(`Order/${cartId}/PlaceOrder`,data);
+    return this.httpService.postData(`Order/AddAddress`,data);
   }
 
   quantity(data)
@@ -91,6 +96,11 @@ export class BookService {
   deleteBook(BookId)
   {
     return this.httpService.delete(`Books/${BookId}`);
+  }
+
+  getAddress()
+  {
+    return this.httpService.getAuthDetails('Order/Address');
   }
 
 }

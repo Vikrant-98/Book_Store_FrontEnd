@@ -1,0 +1,53 @@
+$textcolor: rgba(0, 0, 0, 0.7);
+$bordercolor: rgb(197, 196, 196);
+
+
+@mixin text($textWeight,$textSize) {
+    color: $textcolor;
+    font-weight: $textWeight;
+    font-size: $textSize;
+  }
+@mixin shopping($margin,$width) {
+    margin-top: $margin;
+    width: $width;
+  }
+  
+.order{
+    margin-top: 100px;
+}
+.order-text{
+    font-size: medium;
+    font-weight: 500;
+    color: $textcolor;
+}
+table, td {
+    border: 1px solid $bordercolor;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;    
+  }
+.table-text-email{
+    width: 180px;
+    @include text(500,small);
+}
+.table-text-contact{
+    width: 150px;
+    @include text(500,small);}
+.table-text-address{
+    width: 320px;
+    @include text(500,small);
+}
+.table-text-email-content{
+    @include text(400,small);
+}
+.table-text-contact-content{
+    @include text(400,small);
+}
+.table-text-address-contect{
+    @include text(400,small);
+}
+.continue-shoping{
+    @include shopping(30px,200px);
+}

@@ -26,7 +26,6 @@ export class DisplaybooksComponent implements OnInit {
   view: boolean ;
   Cart: boolean ;
   Wish: boolean = true;
-  length: number;
   Role = localStorage.getItem('userCategory');
  
 

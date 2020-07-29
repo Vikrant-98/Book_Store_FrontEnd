@@ -1,9 +1,10 @@
-import { Output, EventEmitter, Component, OnInit,DoCheck} from '@angular/core';
+import { Output, EventEmitter, Component, OnInit,DoCheck, OnChanges, SimpleChange} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBooksComponent } from '../add-books/add-books.component'
 import { BookService } from '../../service/bookservice/book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from '../../service/dataservice/data.service';
+import { CartComponent } from '../../component/cart/cart.component'
 
 
 @Component({
@@ -11,7 +12,7 @@ import { DataService } from '../../service/dataservice/data.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit,DoCheck {
+export class DashboardComponent implements OnInit {
 
   @Output()getBooks: EventEmitter<any> = new EventEmitter();
 
@@ -28,11 +29,6 @@ export class DashboardComponent implements OnInit,DoCheck {
     private data : DataService,
 
   ) {
-  }
-
-  ngDoCheck(): void
-  {
-    //this.getUserBooks();
   }
 
   ngOnInit(): void {

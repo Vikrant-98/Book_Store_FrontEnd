@@ -7,13 +7,19 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
 
   private book = new BehaviorSubject<any>("");
+  private order = new BehaviorSubject<any>("");
   public share = this.book.asObservable();
-
+  public shareorder = this.order.asObservable();
   constructor() { }
 
   Book(book)
   {
     this.book.next(book);
+  }
+
+  Order(order)
+  {
+    this.order.next(order);
   }
 
 }

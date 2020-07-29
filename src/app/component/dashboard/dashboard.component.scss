@@ -1,5 +1,3 @@
-@import "../../register/register.component.scss";
-
 $ToolBarbg : #960000 ;
 
   mat-toolbar{
@@ -23,6 +21,9 @@ $ToolBarbg : #960000 ;
   }
   .shoping-cart{
     margin-left: 50px;
+    -webkit-text-fill-color:rgb(255, 255, 255);
+  }
+  .account{
     -webkit-text-fill-color:rgb(255, 255, 255);
   }
   .book
