@@ -27,12 +27,14 @@ export class UpdateBooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.BookName = this.data.book.bookName;
-    this.AuthorName = this.data.book.authorName;
-    this.Price = this.data.book.price;
-    this.Available = this.data.book.available;
-    this.Description = this.data.book.description;
-    this.SelectFile = this.data.book.image;
+    console.log("dialog data",this.data.books.bookId);
+    this.BookName = this.data.books.bookName;
+    this.AuthorName = this.data.books.authorName;
+    this.Price = this.data.books.price;
+    this.Available = this.data.books.available;
+    this.Description = this.data.books.description;
+    this.SelectFile = this.data.books.image;
+    console.log("BookName",this.BookName)
   }
 
   close() {

@@ -1,11 +1,85 @@
-<app-tool-bar>
-</app-tool-bar>
-<div
-    fxLayout="row wrap" 
-    fxLayoutAlign="center center" >   
-    <div *ngFor="let item of books">
-        <div class="body-area">
-        {{item.bookName}}
+<mat-toolbar class="sticky">
+    <div
+    fxLayout="row" 
+    fxFlex="100%"
+    fxLayoutAlign="start center" >
+      <div
+        fxLayout="row" 
+        fxLayoutAlign="end center"
+        fxFlex="20%"
+        fxFlex.xs="50%"
+        style="outline: none;"
+        class="bookstore-text">
+          <mat-icon style="margin-bottom: 3px; outline: none;cursor: pointer;">menu_book</mat-icon>
+          <div style="outline: none;cursor: pointer; margin-right: 10px;">
+          Bookstore
+          </div>
+      </div>
+      <div
+      fxHide.xs=true
+      fxFlex="60%">
+      </div>
+      <div
+      fxFlex.xs="50%"
+      fxLayoutAlign="space-between center">
+      <img
+            (click)="openDialog()"
+            class="profile"
+            src="../../../assets/Images/add_circle_outline-white-18dp.svg" 
+            alt="there is an image">
+      <div>
+      </div>
+      <button style="outline: none;margin-top: 12px;" mat-button [matMenuTriggerFor]="menu">
+        <div>
+          <img
+            class="profile"
+            src="../../../assets/Images/account_circle-white-18dp.svg" 
+            alt="there is an image">
         </div>
-    </div>    
+      </button>
+      <mat-menu style="outline: none;" #menu="matMenu">
+        <button style="outline: none;" (click)="signOut()" mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+    </div>
+  </mat-toolbar>
+<div
+class="body"
+fxLayoutAlign="center center">
+<table
+>
+    <thead >
+        <tr>
+            <th class="head">srno.</th>
+            <th class="head">Book Image</th>
+            <th class="head">Book Name</th>
+            <th class="head">Author Name</th>
+            <th class="head">Price</th>
+            <th class="head">Pages</th>
+            <th class="head">Available</th>
+            <th class="head">Edit</th>
+            <th class="head">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of book;index as i">
+            <td class="table-body">{{i+1}}</td>
+            <td
+            class="demo" ><img
+                class="img"
+                src = "{{ item.image }}" 
+                alt="Photo of a {{ item.bookName }}"></td>
+            <td class="table-body" style="text-align: left" >{{item.bookName}}</td>
+            <td class="table-body" style="text-align: left" >{{item.authorName}}</td>
+            <td class="table-body" >{{item.price}}</td>
+            <td class="table-body" >{{item.pages}}</td>
+            <td class="table-body" >{{item.available}}</td>
+            <td class="table-body"><button class="icon" (click)="openBookDialog(i) ">
+                <mat-icon matTooltip="Edit">edit</mat-icon></button></td>
+            <td class="table-body"><button class="icon" (click)="deleteBook(i)">
+                <mat-icon matTooltip="Delete">delete</mat-icon></button></td>
+        </tr>
+    </tbody>
+</table>
 </div>
+<app-footer></app-footer>

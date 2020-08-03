@@ -1,39 +1,41 @@
-$ToolBarbg : #960000 ;
+$ToolBarbg : #A03037 ;
+
+  @mixin icon($margin,$iconColor) {
+    margin-left: $margin;
+    -webkit-text-fill-color:$iconColor;
+  }
 
   mat-toolbar{
     background-color: $ToolBarbg;
   }
-  .menu-icon{
-    margin-left: 8px;
+  .bookstore-text{
+    color: whitesmoke;
   }
   .search{
-    margin-left: 50px;
-    height: 35px;
-    width: 500px;
+    width: 480px;
+    height: 36px;
     padding-left: 30px;
+    border: 1px solid whitesmoke;
     border-radius: 5px;
-    border: 1px solid #ebebeb;
     outline: none;
   }
-  .search-md-xl{
-    margin-left: 50px;
-    width: 300px;
+  .search-xs{
+    width: 140px;
   }
-  .shoping-cart{
-    margin-left: 50px;
-    -webkit-text-fill-color:rgb(255, 255, 255);
-  }
-  .account{
-    -webkit-text-fill-color:rgb(255, 255, 255);
-  }
-  .book
-  {
-    font-size: smaller;
-    color: whitesmoke;
-    font-weight: 500;
-  }
-  .edit{
+  .img{
+    width: 26px;
+    @include icon(5px,whitesmoke);
     outline: none;
-    background-color: transparent;
-    border: transparent;
-}
+    cursor: pointer;
+  }
+  button{
+    padding: 0px;
+  }
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+  }
+  .allign{
+    margin-top: 10px;
+  }

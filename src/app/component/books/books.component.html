@@ -1,12 +1,27 @@
-<div class="body">
+<div 
+  class="body"
+  fxFlex="100%"
+>
+<div
+fxFlex="15%">
+</div>
+<div>
   <div
-  fxLayout="row " 
+  class="body-allign"
+  fxLayout="row" 
   fxLayoutAlign="space-between center" >
   <div class="book-count">
-    Books({{books?.length}})
+    <div fxLayout="row">
+      <div class="book">
+      Books
+      </div> 
+      <div class="book-length">
+        ({{books?.length}})
+      </div>
+    </div>
   </div>
   <div>
-    <button mat-button [matMenuTriggerFor]="menu">Sort By</button>
+    <button  mat-button [matMenuTriggerFor]="menu">Sort by relevence</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="bookName()" (click)="select()">Book Name</button>
     <button mat-menu-item (click)="price()" (click)="select()">Price</button>
@@ -14,22 +29,114 @@
   </div>
 </div>
 <div
-    fxLayout="row wrap" 
+    fxLayout="row wrap"
     fxLayoutAlign="center center"
->      
-    <app-displaybooks
-      (getBooks)="getBooks()"
-      *ngFor="let item of books"
-      [book]="item">
-    </app-displaybooks>
+    style="margin-bottom: 50px;">
+    <div
+    *ngFor="let item of books;index as i">
+    <div
+      class="book-area">
+      <div     
+        *ngIf="item.available > 0;else elseblock" 
+        class="book-image"
+        fxLayout="row" 
+        fxLayoutAlign="center center" 
+        fxFlex="55">
+      <img 
+        mat-card-image 
+        class="img"
+        src = "{{ item.image }}" 
+        alt="Photo of a {{ item.bookName }}">
+      </div>
+      <ng-template #elseblock>
+        <div 
+          class="book-image"
+          fxLayout="row" 
+          fxLayoutAlign="center center" 
+          fxFlex="55">
+      <img 
+          mat-card-image
+          class="img"
+          src = "{{ item.image }}" 
+          alt="Photo of a {{ item.bookName }}">
+      <img 
+          mat-card-image 
+          class="img-out"
+          src = "../../../assets/Images/outofstock.PNG">
+      </div>
+      </ng-template>
+      <div
+          fxLayout="column" 
+          fxLayoutAlign="space-around start" 
+          class="book-content" >
+          <div>
+          {{ item.bookName }}
+          </div>
+          <div class="book-author">
+          by  {{ item.authorName }}
+          </div>
+          <div>
+              Rs. {{ item.price }}
+          </div>
+      </div>
+  <div
+      fxLayoutAlign="start start">
+      <button
+          *ngIf="!visibleCart[i] && !visibleWishList[i] && item.available > 0"
+          class="add-to-cart"
+          mat-raised-button 
+          fxLayoutAlign="center center"
+          (click)="selectCart(i);addToCart(i)"
+          >ADD TO CART
+      </button>
+      <button
+        *ngIf="visibleCart[i] && item.available > 0"
+        class="add-to-bag"
+        mat-raised-button
+        fxLayoutAlign="center center"
+        >ADDED TO BAG
+      </button>
+      <button 
+        *ngIf="!visibleWishList[i] && !visibleCart[i] && item.available > 0"
+        class="add-to-cart wishlist"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToWishList(i); selectWishList(i)"
+      >WISHLIST
+      </button>
+      <button 
+        *ngIf="item.available == 0 && !visibleWishList[i]"
+        class="add-to-cart wishlist-select"
+        mat-raised-button 
+        fxLayoutAlign="center center"
+        (click)="addToWishList(i); selectWishList(i)"
+      >WISHLIST
+      </button>
+      <button 
+        *ngIf="visibleWishList[i]"
+        class="add-to-cart wishlist-select"
+        mat-raised-button
+        fxLayoutAlign="center center"
+      >ADDED TO WISHLIST
+      </button>
+      </div>
+  </div>
 </div>
-<div
+
+</div>
+<!-- <div
     fxLayout="row" 
-    fxLayoutAlign="center center">
+    fxLayoutAlign="center center"
+    style = "margin-bottom: 50px;">
     <mat-paginator 
       [length]="books?.length" 
       [pageSize]="pageSize" 
       (page)="pageEvent = getPaginatorData($event)">
 </mat-paginator> 
+</div> -->
+</div>
+<div
+fxFlex=15%>
 </div>
 </div>
+<app-footer></app-footer>

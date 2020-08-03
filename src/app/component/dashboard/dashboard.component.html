@@ -1,83 +1,124 @@
 <div>
-    <mat-toolbar>
+    <mat-toolbar class="sticky">
       <div
       fxLayout="row" 
-      fxFlex="100">
-      <div
-        fxLayout="row" 
-        fxLayoutAlign="end"
-        fxFlex="20">
-        <div>
-          <mat-icon>
-            <img src="../../../assets/Images/open-book-svgrepo-com (1).svg" />
-          </mat-icon>
-        </div>
-        <div>
-          Book Store
-        </div>
-      </div>
-      <div 
-        fxLayout="row"
-        fxLayoutAlign="start center"
-        fxFlex="60"   
-        >
-        <input 
-          fxHide.xs=true 
-          fxHide.sm=true 
-          type="search" 
-          [(ngModel)]="search"
-          placeholder="Search" 
-          (keyup)="updateText()"
-          class="search"
-        >
-        <input 
-          fxHide.md=true 
-          fxHide.xl=true 
-          fxHide.lg=true 
-          fxHide.xs=true
-          type="search" 
-          [(ngModel)]="search"
-          placeholder="Search"
-          (keyup)="updateText()" 
-          class="search search-md-xl"
-        >
-        <div fxLayout="row"
-        fxLayoutAlign="space-between center">
-          <div>
-          <mat-icon 
-              *ngIf="view"
-              class="shoping-cart"
-              routerLink="/dashboard/cart" 
-              routerLinkActive="cart"
-              matBadge="{{cart?.length}}" 
-              matBadgeColor="warn">shopping_cart
-          </mat-icon>
-        </div>
-          <div 
-          *ngIf="!view"
+      fxFlex="100%"
+      fxLayoutAlign="start center" >
+        <div
           fxLayout="row" 
-          fxLayoutAlign="center center">
-          <button class="edit">
-          <mat-icon
-          (click)="openDialog()" 
-          class="shoping-cart">
-            add
-          </mat-icon>
-        </button>
-          <div class="book">
-              Book
-          </div>         
-          </div>
-          <div>
+          fxLayoutAlign="end center"
+          fxLayoutAlign.xs="start center"
+          fxFlex="20%"
+          fxFlex.xs="50%"
+          style="outline: none;"
+          routerLink="/dashboard" 
+          routerLinkActive="cart" 
+          class="bookstore-text">
             <mat-icon 
-                class="account"
-            >account_circle
+              matTooltip="BookStore" 
+              style="margin-bottom: 3px; outline: none;cursor: pointer;">menu_book</mat-icon>
+            <div 
+              fxHide.xs="true" 
+              matTooltip="BookStore"
+              style="outline: none;cursor: pointer; margin-right: 10px;">
+            Bookstore
+            </div>
+            <mat-icon
+            matTooltip="search"
+            fxHide.md=true
+            fxHide.sm=true
+            fxHide.xl=true
+            fxHide.lg=true>
+              search
             </mat-icon>
-          </div>
+            <div
+            fxHide.md=true
+            fxHide.sm=true
+            fxHide.xl=true
+            fxHide.lg=true
+            fxLayoutAlign="start center">
+            <input 
+            matTooltip="search"
+            class="search search-xs"
+            placeholder="Search"
+            [(ngModel)]="search" 
+            (keyup)="updateText()"
+            type="search">
         </div>
-    </div>
+        </div>
+        <div
+        fxFlex="50%"
+        fxFlex.sm="30%"
+        fxHide.xs=true
+        fxLayoutAlign="center center">
+          <input 
+          class="search"
+          matTooltip="search"
+          placeholder="Search"
+          [(ngModel)]="search" 
+          (keyup)="updateText()"
+          type="search">
+        </div>
+        <div
+        fxHide.xs=true
+        fxFlex="12%">
+        </div>
+        <div
+        fxFlex="15%"
+        fxFlex.xs="50%"
+        fxLayoutAlign="space-between center"
+        fxLayoutAlign.xs="end center">
+        
+          <mat-icon 
+            class="img" 
+            *ngIf="cartCount > 0"
+            matBadge="{{cartCount}}"
+            matTooltip="Cart"
+            routerLink="/dashboard/cart" 
+            routerLinkActive="cart" 
+            matBadgeColor="warn">shopping_cart_outlined
+          </mat-icon>
+          <mat-icon 
+            class="img" 
+            *ngIf="cartCount == 0"
+            matBadge=""
+            matTooltip="Cart"
+            routerLink="/dashboard/cart" 
+            routerLinkActive="cart" 
+            matBadgeColor="warn">shopping_cart_outlined
+          </mat-icon>
+          <mat-icon 
+            class="img" 
+            *ngIf="wishListCount > 0"
+            matBadge="{{wishListCount}}" 
+            matTooltip="WishList"
+            routerLink="/dashboard/wishList" 
+            routerLinkActive="cart"
+            matBadgeColor="warn">receipt_long
+          </mat-icon>
+          <mat-icon 
+            *ngIf="wishListCount == 0"
+            class="img" 
+            matBadge="" 
+            matTooltip="WishList"
+            routerLink="/dashboard/wishList" 
+            routerLinkActive="cart"
+            matBadgeColor="warn">receipt_long
+          </mat-icon>
+        
+        <button style="outline: none;" mat-button [matMenuTriggerFor]="menu">
+          <div class="allign">
+            <img
+              class="img" 
+              src="../../../assets/Images/account_circle-white-18dp.svg" 
+              alt="there is an image">
+          </div>
+        </button>
+        <mat-menu style="outline: none;" #menu="matMenu">
+          <button style="outline: none;" (click)="signOut()" mat-menu-item>Logout</button>
+        </mat-menu>
+      </div>
       </div>
     </mat-toolbar>  
-        <router-outlet></router-outlet>
   </div>
- 
+<router-outlet></router-outlet>

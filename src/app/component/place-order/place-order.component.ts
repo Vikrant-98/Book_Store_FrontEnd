@@ -38,13 +38,18 @@ export class PlaceOrderComponent implements OnInit {
   isPopUp: boolean = true;
   details: boolean = true;
   
-  Name: String
+  Name: string
   Locality: String
-  PhoneNumber: String
-  PinCode: Number
+  PhoneNumber: string
+  PinCode: string
   Address: String
-  City: String
-  LandMark: String
+  City: string
+  LandMark: string
+
+  phoneCheck = /^([1-9]{1}[0-9]{9})$/;
+  pinCheck = /^([1-9]{1}[0-9]{5})$/;
+  Check = /^[A-Z]{1}[a-z]*$/;
+  nameCheck = /^[A-Z]{1}[a-z]{2}[a-z]*$/;
 
   getAddress()
   {
@@ -75,9 +80,18 @@ export class PlaceOrderComponent implements OnInit {
   
   
   addAddress() {
-      if(
-        this.value > 0) {
-      let Data = {
+    console.log("address",this.Address)
+    console.log("check", this.phoneCheck.test(this.PhoneNumber))
+      if(this.Address !== ''
+       &&this.City !== ''
+       &&this.Check.test(this.LandMark) !== false
+       &&this.Locality !== ''
+       &&this.nameCheck.test(this.Name) !== false
+       &&this.pinCheck.test(this.PinCode) !== false
+       &&this.phoneCheck.test(this.PhoneNumber) !== false
+       &&this.value > 0) 
+        {     
+          let Data = {
           Locality: this.Locality,
           City: this.City,
           PhoneNumber: this.PhoneNumber,
@@ -103,7 +117,7 @@ export class PlaceOrderComponent implements OnInit {
     }
     else
     {
-      this.snackBar.open('Fill the Address Details', '', {
+      this.snackBar.open('Fill Valid the Address Details', '', {
         duration: 5000,
       });
     }
@@ -116,6 +130,7 @@ export class PlaceOrderComponent implements OnInit {
         Quantity: this.value,
         AddressID: this.addressID
       };
+      console.log("Data",Data)
       this.bookService.placeOrder(Data).subscribe(
       (resp : any) => {
       this.getBooks.emit();

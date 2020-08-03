@@ -1,10 +1,11 @@
-import { Component, OnInit, Output, EventEmitter,DoCheck, OnChanges } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookService } from '../../service/bookservice/book.service';
 import { AddBooksComponent } from '../add-books/add-books.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../service/dataservice/data.service';
 import {PageEvent} from '@angular/material/paginator';
+import { Router,NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -15,31 +16,44 @@ import {PageEvent} from '@angular/material/paginator';
 export class BooksComponent implements OnInit{
 
   
-  books: Array<any>;
+  books: any;
   text='';
   sortBy='';
   length: number = 12;
   pageEvent
+  mySubscription: any;
 
 
   constructor(
-    private dialog : MatDialog,
     private bookService: BookService,
     private snackBar: MatSnackBar,
-    private data: DataService
-  ) { }
+    private data: DataService,
+    private router: Router
+  ) { 
+
+    
+  }
 
   ngOnInit(): void {
     this.data.share.subscribe( x =>{
       this.text = x 
       this.getSearchBooks()} );
-    this.select()
+    this.select();
+    this.data.shareCommon.subscribe( x =>{
+      if(x.type == "getBooks")
+      {
+        this.getBooks();
+      }
+    } );
   }
 
-  pageIndex:number = 0;
+
+    pageIndex:number = 0;
     pageSize:number = 12;
     lowValue:number = 0;
-    highValue:number = 12;       
+    highValue:number = 12;
+    visibleCart = [];
+    visibleWishList = [];     
 
   getPaginatorData(event){
      console.log(event);
@@ -62,7 +76,21 @@ export class BooksComponent implements OnInit{
   {
     this.sortBy = 'Price';
   }
-
+  outOfStock(i)
+  {
+    this.visibleCart[i] = false;
+    this.visibleWishList[i] = true;
+  }
+  selectCart(i)
+  {
+    this.visibleCart[i] = true;
+    this.visibleWishList[i] = false;
+  }
+  selectWishList(i)
+  {
+    this.visibleCart[i] = false;
+    this.visibleWishList[i] = true;
+  }
   select(){
     if(this.text !== '')
     {
@@ -125,37 +153,46 @@ export class BooksComponent implements OnInit{
     );
   }
 
-  openDialog()
+  addToCart(i)
   {
-    const dialogRef = this.dialog.open(AddBooksComponent);
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res !== undefined) {
-        let bookData = {
-          BookName: res.BookName,
-          AuthorName: res.AuthorName,
-          Description: res.Description,
-          Price: res.Price,
-          Pages: res.Pages,
-          Available: res.Available
-        };
-        this.bookService.addBook(bookData).subscribe(
-          (res) => 
-          { 
-            console.log("addBook responce",res);
-            console.log("addBook data",bookData);
-          },
-          (err) => 
-          {
-            this.snackBar.open('Error occured Add Books', '', 
-            {
-              duration: 2000,
-            });
-            console.log(err);
-          }
-        );    
+    let cartData = {
+      BookID: this.books[i].bookId
+    };
+    this.bookService.addToCart(cartData).subscribe(
+      (res) => {
+        console.log(res);
+        this.snackBar.open('Added to Cart Succesfully', '', {
+          duration: 2000,
+        });
+      },
+      (err) => {
+        console.log(err)
+        this.snackBar.open('No Cart Added', '', {
+          duration: 2000,
+        });
       }
-    });
+    );
   }
 
+  addToWishList(i)
+  {
+    let cartData = {
+      BookID: this.books[i].bookId,
+      Quantity: 0
+    };
+    this.bookService.addToWishList(cartData).subscribe(
+      (res) => {
+        this.snackBar.open('Added to WishList Succesfully', '', {
+          duration: 2000,
+        });
+      },
+      (err) => {
+        this.snackBar.open('No WishList Added', '', {
+          duration: 2000,
+        });
+      }
+    );
+  }
 
 }
+

@@ -21,7 +21,6 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule} from '@angular/material/list';
 import { BooksComponent } from './component/books/books.component';
-import { DisplaybooksComponent } from './component/displaybooks/displaybooks.component';
 import { CartComponent } from './component/cart/cart.component';
 import { WishListComponent } from './component/wish-list/wish-list.component';
 import { PlaceOrderComponent } from './component/place-order/place-order.component';
@@ -29,14 +28,17 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSliderModule} from '@angular/material/slider';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
-import { IconsComponent } from './component/icons/icons.component';
 import { UpdateBooksComponent } from './component/update-books/update-books.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AddBooksComponent } from './component/add-books/add-books.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { WishListToCartComponent } from './component/wish-list-to-cart/wish-list-to-cart.component';
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 @NgModule({
@@ -46,17 +48,15 @@ import { OrderDetailsComponent } from './component/order-details/order-details.c
     LoginComponent,
     DashboardComponent,
     BooksComponent,
-    DisplaybooksComponent,
     CartComponent,
     WishListComponent,
     PlaceOrderComponent,
     AdminDashboardComponent,
     ToolBarComponent,
-    IconsComponent,
     UpdateBooksComponent,
     AddBooksComponent,
-    WishListToCartComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +80,11 @@ import { OrderDetailsComponent } from './component/order-details/order-details.c
     MatSliderModule,
     MatDialogModule,
     MatBadgeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    MatTableModule,
+    NgbModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

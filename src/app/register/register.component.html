@@ -50,12 +50,21 @@
                 </mat-icon>
               </mat-form-field>
               <div>
-                <section fxLayoutAlign="center center">
+                <section fxLayoutAlign="space-around center">
                     <div>
-                        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" >Submit</button>
+                        <button 
+                        mat-raised-button 
+                        color="primary" 
+                        type="submit" 
+                        routerLink="" 
+                        routerLinkActive="cart" >Login</button>
                     </div>
+                    <div>
+                      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" >Submit</button>
+                  </div>
                 </section>
             </div>
         </mat-card>
     
 </div>
+<app-footer></app-footer>

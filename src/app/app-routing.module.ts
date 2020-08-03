@@ -7,18 +7,17 @@ import { AuthGuard } from './guard/auth.guard';
 import { BooksComponent } from './component/books/books.component';
 import { CartComponent } from './component/cart/cart.component';
 import { WishListComponent } from './component/wish-list/wish-list.component';
-import { PlaceOrderComponent } from './component/place-order/place-order.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { OrderDetailsComponent } from './component/order-details/order-details.component';
 
 const routes: Routes = 
 [
   {
-    path: '',
+    path: 'registration',
     component: RegisterComponent,
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
@@ -33,12 +32,9 @@ const routes: Routes =
     ],
   },
   {
-    path: 'adminDashboard',
-    component: DashboardComponent,
     canActivate: [AuthGuard],
-    children: [
-      { path: '', component: BooksComponent },
-    ],
+    path: 'adminDashboard',
+    component: AdminDashboardComponent,
   }
 ];
 

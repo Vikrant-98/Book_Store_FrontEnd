@@ -1,9 +1,81 @@
-<div
-    fxLayout="row wrap" 
-    fxLayoutAlign="center center" >   
-    <app-wish-list-to-cart 
-        (getWishList)="getWishList()"
-        *ngFor="let item of books"
-        [book]=item>
-    </app-wish-list-to-cart>    
+<div fxFlex="5%"></div>
+<div 
+    *ngIf="books?.length == 0"
+    fxFlex="column"
+    >
+    <div  
+        fxLayoutAlign="center center">
+        <img class="image" src="../../../assets/Images/3630156.jpg" alt="there is an image">  
+    </div>
+    <div
+    class="cart" 
+    fxLayoutAlign="center center">
+        !!!Oops.... No WishList Available
+    </div>
+    <div 
+        class="continue"
+        fxLayoutAlign="center center">
+        <button
+          mat-raised-button 
+          color="primary"
+          routerLink="/dashboard" 
+          routerLinkActive="cart"
+          fxLayoutAlign="center center"
+          >Continue Shopping
+      </button>
+    </div>
+    </div>
+<div class="layout">   
+    <div 
+        *ngIf="books?.length != 0" 
+        fxFlexOffset="10%"
+        fxFlexOffset.xs="0%"
+        fxFlexOffset.sm="0%" 
+        fxLayout="column"
+        fxLayoutAlign="center center">
+        <div class="layout-open">
+            <div fxLayout="row">
+                <div class="cart-count">
+                    Wish List
+                </div>
+                <div style="color: gray;margin-left: 5px;">
+                    ({{books?.length}})
+                </div>
+            </div> 
+    <div *ngFor="let book of books;index as i">
+        <div
+        class="body" 
+        fxLayout="row">
+        <img 
+        mat-card-image 
+        class="img"
+        src = "{{ book.image }}" 
+        alt="Photo of a {{ book.bookName }}">
+        <div class="book">
+          <div >{{ book.bookName }}</div>
+          <div class="book book-author-name">by  {{ book.authorName }}</div>
+          <div class="book"> Rs. {{ book.price }}</div>
+          <div fxLayout="row">
+            <button 
+                class="remove" 
+                mat-raised-button
+                (click)="deleteWishList(i)"
+                fxLayoutAlign="center center"
+                color="warn">Remove
+            </button>
+            <button
+                class="move" 
+                mat-raised-button 
+                (click)="moveToCart(i)"
+                fxLayoutAlign="center center"
+                color="primary">Move to Cart
+            </button>
+          </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </div>
+<div fxFlex="5%"></div>
+<app-footer></app-footer>

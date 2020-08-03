@@ -1,0 +1,124 @@
+@mixin ice-dec($top,$left,$right){
+    margin-top: $top;
+    margin-left: $left;
+    margin-right: $right;
+    cursor: pointer;
+    -webkit-text-fill-color:rgb(156, 155, 155);
+}
+@mixin book($bottom,$fontSize,$fontWeight,$color){
+    margin-bottom: $bottom;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $color;
+}
+.layout{
+    margin-top: 60px;
+}
+.layout-open{
+
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 30px;
+    margin-top: 60px;
+    border-radius: 2px;
+    border-color: rgb(228, 227, 227);
+    border: 1px solid rgb(201, 199, 199);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+}
+.cart-text{
+    margin-bottom: 25px;
+    font-size: medium;
+}
+.cart-count{
+    margin-left: 5px;
+    margin-bottom: 8px;
+    font-size: medium;
+}
+.body{
+    margin: 6px;
+}
+.image{
+    display: block;
+    margin-top: 120px;
+    width: 350px;
+    opacity: 0.6;
+}
+.cart{
+    font-size: x-large;
+    color: rgb(95, 86, 86);
+}
+.continue{
+    margin-top: 25px;
+}
+.img{
+    width: 80px;
+    height: 110px;
+    margin-right: 35px;;
+}
+.book-name{
+    @include book(5px,medium,500,black);
+}
+.book-author-name{
+    @include book(5px,small,400,gray);
+}
+.book-quantity{
+    margin-top: 15px;
+}
+.quantity{
+    width: 25px;
+    padding-left: 15px;
+}
+.dec{
+    @include ice-dec(15px,0px,5px);
+}
+.inc{
+    @include ice-dec(15px,5px,40px);
+}
+.remove{
+    margin-top: 10px;
+    font-size: small;
+    cursor: pointer;
+}
+.name{
+    width: 250px;
+}
+.phoneNumber{
+    margin-left: 20px;
+}
+.address{
+    width: 520px;
+}
+.order-summery{
+    margin-bottom: 90px;
+}
+@media only screen and (max-width: 840px)
+{
+    .layout-open{
+        width: 580px;
+    }
+    .name{
+        width: 300px;
+    }
+    .address{
+        margin-left: 0px;
+    }
+    .phoneNumber{
+        margin-left: 0px;
+    }
+}
+@media only screen and (max-width: 700px)
+{
+    .layout-open{
+        width: 380px;
+    }
+    .name{
+        width: 330px;
+    }
+    .address{
+        margin-left: 24px;
+        width: 330px;
+    }
+    
+}

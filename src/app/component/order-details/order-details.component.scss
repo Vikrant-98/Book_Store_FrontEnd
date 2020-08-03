@@ -1,7 +1,6 @@
 $textcolor: rgba(0, 0, 0, 0.7);
 $bordercolor: rgb(197, 196, 196);
 
-
 @mixin text($textWeight,$textSize) {
     color: $textcolor;
     font-weight: $textWeight;

@@ -76,6 +76,9 @@ export class LoginComponent implements OnInit {
     this.userService.Adminlogin(userData).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.jsontoken);
+        localStorage.setItem('FirstName', response.result.firstName);
+        localStorage.setItem('LastName', response.result.lastName);
+        localStorage.setItem('Email', response.result.emailID);
         localStorage.setItem('userCategory', response.result.userCategory);
         this.snackBar.open('Admin Login Sucessfully', '', {
           duration: 2000,
@@ -99,6 +102,9 @@ export class LoginComponent implements OnInit {
     this.userService.login(userData).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.jsontoken);
+        localStorage.setItem('FirstName', response.result.firstName);
+        localStorage.setItem('LastName', response.result.lastName);
+        localStorage.setItem('Email', response.result.emailID);
         localStorage.setItem('userCategory', response.result.userCategory);
         this.snackBar.open('User Login Sucessfully', '', {
           duration: 2000,
