@@ -39,7 +39,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FooterComponent } from './component/footer/footer.component';
-
+// import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { FooterComponent } from './component/footer/footer.component';
     UpdateBooksComponent,
     AddBooksComponent,
     OrderDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    // JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -84,9 +85,13 @@ import { FooterComponent } from './component/footer/footer.component';
     MatGridListModule,
     MatTableModule,
     NgbModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(){
+    console.log("App module load")
+  }
+ }

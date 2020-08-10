@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
   constructor(
     private snackBar : MatSnackBar,
     private bookService : BookService,
-    private dialog : MatDialog,
     private data : DataService,
     private route: Router
   ) {
@@ -39,7 +38,7 @@ export class DashboardComponent implements OnInit {
     this.getUserBooks();
     this.getWishList();
     this.data.cartCount.subscribe( x =>{
-      this.cartCount = x } );
+    this.cartCount = x } );
     this.data.shareWishListCount.subscribe( x =>{
     this.wishListCount = x } );
   }

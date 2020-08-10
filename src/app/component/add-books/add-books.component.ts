@@ -1,6 +1,4 @@
-import { Component,OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
-import {BookService } from '../../service/bookservice/book.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component,OnInit, Output, EventEmitter} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 
@@ -15,7 +13,9 @@ export class AddBooksComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddBooksComponent>
-  ) { }
+  ) { 
+    
+  }
 
   BookName: string;
   AuthorName: string;
@@ -36,36 +36,5 @@ export class AddBooksComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
-  // addBook(): void 
-  // {
-  //       let bookData = {
-  //         BookName: this.BookName,
-  //         AuthorName: this.AuthorName,
-  //         Description: this.Description,
-  //         Price: this.Price,
-  //         Pages: this.Pages,
-  //         Available: this.Available
-  //       };
-        
-  //       this.bookService.addBook(bookData).subscribe(
-  //         (res) => 
-  //         { 
-  //           this.getBooks.emit();
-  //           console.log("addBook responce",res);
-  //           console.log("addBook data",bookData);
-  //         },
-  //         (err) => 
-  //         {
-  //           this.snackBar.open('Error occured Add Books', '', 
-  //           {
-  //             duration: 2000,
-  //           });
-  //           console.log(err);
-  //         }
-  //       );    
-  // }
-  
-  
 
 }

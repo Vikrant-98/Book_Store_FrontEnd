@@ -76,11 +76,6 @@ export class BooksComponent implements OnInit{
   {
     this.sortBy = 'Price';
   }
-  outOfStock(i)
-  {
-    this.visibleCart[i] = false;
-    this.visibleWishList[i] = true;
-  }
   selectCart(i)
   {
     this.visibleCart[i] = true;
@@ -91,7 +86,9 @@ export class BooksComponent implements OnInit{
     this.visibleCart[i] = false;
     this.visibleWishList[i] = true;
   }
-  select(){
+
+  select()
+  {
     if(this.text !== '')
     {
       this.getSearchBooks();
@@ -105,7 +102,7 @@ export class BooksComponent implements OnInit{
       this.getBooks();
     }
   }
-  
+
   getSearchBooks()
   {
     this.bookService.getSearchBooks(this.text).subscribe(

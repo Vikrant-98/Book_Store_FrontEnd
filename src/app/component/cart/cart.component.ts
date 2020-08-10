@@ -23,6 +23,8 @@ export class CartComponent implements OnInit {
     private router: Router
   ) { 
 
+    console.log("This is cart")
+
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -88,6 +90,7 @@ export class CartComponent implements OnInit {
 
   isPopUp: boolean = true;
   details: boolean = true;
+  continue: boolean = true;
   hide: boolean = true;
   
   Name: string
@@ -166,7 +169,7 @@ export class CartComponent implements OnInit {
           });
             this.addressID = resp.data.addressID;
             this.isPopUp = false;
-            this.details = true;
+            this.continue = false;
         },
         (err) => {
           this.snackBar.open('something went wrong', '', {

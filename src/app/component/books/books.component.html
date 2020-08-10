@@ -21,7 +21,11 @@ fxFlex="15%">
     </div>
   </div>
   <div>
-    <button  mat-button [matMenuTriggerFor]="menu">Sort by relevence</button>
+    <button  
+      mat-button 
+      [matMenuTriggerFor]="menu">
+      Sort by relevence
+    </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="bookName()" (click)="select()">Book Name</button>
     <button mat-menu-item (click)="price()" (click)="select()">Price</button>
@@ -43,10 +47,13 @@ fxFlex="15%">
         fxLayoutAlign="center center" 
         fxFlex="55">
       <img 
-        mat-card-image 
         class="img"
         src = "{{ item.image }}" 
         alt="Photo of a {{ item.bookName }}">
+        <mat-card class="tooltip-content">
+          <p class="des">Book Details</p>
+          {{ item.description }}
+        </mat-card>
       </div>
       <ng-template #elseblock>
         <div 
@@ -55,15 +62,17 @@ fxFlex="15%">
           fxLayoutAlign="center center" 
           fxFlex="55">
       <img 
-          mat-card-image
           class="img"
           src = "{{ item.image }}" 
           alt="Photo of a {{ item.bookName }}">
       <img 
-          mat-card-image 
           class="img-out"
           src = "../../../assets/Images/outofstock.PNG">
       </div>
+      <mat-card class="tooltip-content">
+        <p class="des">Book Details</p>
+        {{ item.description }}
+      </mat-card>
       </ng-template>
       <div
           fxLayout="column" 

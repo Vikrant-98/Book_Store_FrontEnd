@@ -58,16 +58,6 @@ export class HttpService {
     return this.http.put(environment.baseUrl + url, data, httpOption);
   }
 
-  WishList(url: string) {
-    let httpOption = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      })
-    };
-    return this.http.post(environment.baseUrl + url, httpOption);
-  }
-
   putImage(url: string, Image) {
     let httpOption = {
       headers: new HttpHeaders({
